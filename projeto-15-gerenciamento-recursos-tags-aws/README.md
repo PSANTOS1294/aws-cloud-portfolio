@@ -1,29 +1,31 @@
 # Projeto: Gerenciamento de Recursos com Tags na AWS
 
+## Problema
 
+O desafio deste laboratório foi compreender como organizar e administrar recursos em ambientes cloud que possuem diversas instâncias e serviços ativos. Em cenários reais, identificar recursos manualmente pode se tornar complexo e aumentar a chance de erros, tornando necessária uma estratégia que facilite gerenciamento, automação e controle do ambiente.
 
 ## Objetivo
-Utilizar tags para organizar, identificar e automatizar o gerenciamento de instâncias EC2, incluindo ações como busca, modificação, parada, inicialização e encerramento de recursos com base em critérios definidos.
 
----
+Meu objetivo foi utilizar tags para organizar, identificar e automatizar o gerenciamento de instâncias EC2, permitindo executar ações como busca, modificação, parada, inicialização e encerramento de recursos com base em critérios específicos.
 
-## Serviços utilizados
-- Amazon EC2  
-- AWS CLI  
-- AWS SDK for PHP  
-- Amazon VPC  
+## Solução
 
----
+Para resolver esse desafio, utilizei uma instância central responsável pelo gerenciamento das demais instâncias por meio da AWS CLI e scripts automatizados. Realizei a identificação de recursos utilizando filtros baseados em tags como projeto, ambiente e versão. Também utilizei consultas avançadas para refinar resultados e criei scripts para automatizar alterações em lote, iniciar e interromper instâncias automaticamente e identificar recursos que não atendiam às regras definidas de conformidade.
 
-## Implementação
-- Acesso à instância **Command Host** com AWS CLI configurada  
-- Identificação de instâncias via filtros de tags (`Project`, `Environment`, `Version`)  
-- Uso de **JMESPath** para formatar e refinar resultados  
-- Criação e execução de script Bash para alterar tags em lote  
-- Uso do script **stopinator.php** para parar e iniciar instâncias automaticamente  
-- Execução de script para detectar e encerrar instâncias sem tag obrigatória (`Environment`)  
+## Ferramentas
 
----
+Tecnologias e recursos utilizados no projeto:
+
+- Amazon EC2
+- AWS CLI
+- AWS SDK for PHP
+- Amazon VPC
+- Bash Script
+- JMESPath
+- Tags AWS
+- Automação de infraestrutura
+- Gerenciamento de recursos
+- Governança em nuvem
 
 ## Arquitetura da solução
 
@@ -32,7 +34,7 @@ Utilizar tags para organizar, identificar e automatizar o gerenciamento de inst�
 
 A solução consiste em uma VPC com sub-redes pública e privada contendo múltiplas instâncias EC2. Uma instância central (Command Host) executa comandos via AWS CLI e scripts automatizados que gerenciam as demais instâncias com base em suas tags.
 
----
+
 
 ## Evidências
 
@@ -78,5 +80,10 @@ aws ec2 create-tags --resources $ids --tags 'Key=Version,Value=1.1'
 ```bash
 aws ec2 terminate-instances --instance-ids <ids>
 ````
-## Aprendizado
-Neste laboratório, aprendi na prática como as tags são fundamentais para organizar e gerenciar recursos na AWS de forma escalável. Entendi como utilizar a AWS CLI com filtros e consultas avançadas (JMESPath) para localizar instâncias específicas, além de automatizar ações como alteração de tags, parada e inicialização de recursos. Também compreendi como implementar políticas de segurança baseadas em conformidade, como o conceito de “tag-or-terminate”, que garante que apenas recursos devidamente identificados permaneçam ativos, reforçando governança e controle em ambientes cloud.
+## Resultado
+
+Ao final do laboratório, consegui identificar, organizar e administrar instâncias EC2 utilizando tags como critério principal. Também automatizei ações de gerenciamento, como atualização de informações, parada, inicialização e encerramento de recursos, tornando a administração do ambiente mais eficiente.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre gerenciamento e organização de recursos em ambientes cloud. Aprendi como as tags podem facilitar a identificação de recursos e contribuir para automação e governança. Também compreendi a importância de utilizar filtros, scripts e políticas de conformidade para reduzir tarefas manuais, aumentar o controle sobre a infraestrutura e manter ambientes mais organizados e escaláveis.
