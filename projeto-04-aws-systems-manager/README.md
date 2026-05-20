@@ -1,23 +1,25 @@
 # AWS Systems Manager
 
-## Objetivo
-Explorar o AWS Systems Manager para centralizar a gestão operacional e automatizar tarefas em recursos da AWS, incluindo instâncias EC2 e outros ambientes.
+## Problema
+O desafio deste laboratório foi entender como administrar diferentes recursos da AWS de maneira centralizada e eficiente. Em ambientes com várias instâncias e serviços, realizar configurações e manutenções individualmente pode aumentar o tempo das atividades, gerar inconsistências e dificultar o controle operacional.
 
-## Serviços Utilizados
-- AWS Systems Manager
-- Amazon EC2
+## Objetivo
+Meu objetivo foi explorar o AWS Systems Manager para centralizar a administração de recursos na AWS, automatizando tarefas operacionais e facilitando o gerenciamento de instâncias de forma mais segura.
 
 ## Implementação
 
-Durante este laboratório prático, foram realizadas as seguintes etapas:
+Para resolver esse desafio, utilizei o AWS Systems Manager como ferramenta principal de gerenciamento. Durante o laboratório, verifiquei as permissões necessárias para seu funcionamento, executei tarefas em múltiplas instâncias de forma centralizada, realizei alterações em configurações e utilizei o acesso remoto às instâncias sem precisar de conexão direta via SSH.
 
-1. Verificação das configurações e permissões necessárias para uso do Systems Manager.
-2. Execução de tarefas em múltiplas instâncias de forma centralizada.
-3. Atualização de configurações de aplicações por meio de automações.
-4. Acesso à linha de comando das instâncias utilizando o Systems Manager, sem necessidade de conexão direta via SSH.
+## Ferramentas
 
-## Arquitetura da Solução
-A solução utiliza o AWS Systems Manager como ferramenta central para gerenciamento de recursos, permitindo executar comandos, automatizar tarefas e acessar instâncias de forma segura. As instâncias EC2 são gerenciadas sem exposição direta à internet, aumentando a segurança operacional e reduzindo a dependência de acesso remoto tradicional.
+- AWS Systems Manager
+- Amazon EC2
+- Session Manager
+- Automação de tarefas
+- Gerenciamento centralizado
+- Controle de permissões
+- Execução remota de comandos
+- Administração operacional
 
 ## Evidências
 
@@ -25,6 +27,10 @@ A solução utiliza o AWS Systems Manager como ferramenta central para gerenciam
 
 <img width="800" height="267" alt="image" src="https://github.com/user-attachments/assets/cc5416e5-971a-42b4-8f6b-59daff2fb3d3" />
 
+## Resultado
+Ao final do laboratório, consegui gerenciar recursos de forma centralizada, executar tarefas em diferentes instâncias e acessar ambientes remotamente sem a necessidade de métodos tradicionais de conexão. Isso tornou o gerenciamento mais organizado e seguro.
 
 ## Aprendizado
-Este laboratório proporcionou uma visão prática sobre gerenciamento centralizado de recursos na AWS. Foi possível compreender como o Systems Manager facilita operações em escala, melhora a segurança ao evitar acesso direto às instâncias e permite automação de tarefas administrativas. Esse conhecimento é fundamental para ambientes corporativos que exigem eficiência operacional e controle sobre múltiplos recursos.
+Este laboratório me ajudou a compreender como o AWS Systems Manager simplifica a administração de ambientes em nuvem. Aprendi a importância de centralizar operações, automatizar atividades repetitivas e reduzir dependências de acessos diretos às instâncias. Também percebi como esse tipo de gerenciamento contribui para aumentar a segurança, melhorar a produtividade e facilitar a administração de ambientes maiores e mais complexos.
+
+
