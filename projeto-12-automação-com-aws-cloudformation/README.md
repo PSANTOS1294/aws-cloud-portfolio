@@ -1,49 +1,32 @@
 # Projeto 12 - Automação com AWS CloudFormation
 
+## Problema
+
+O desafio deste laboratório foi compreender como criar e gerenciar infraestrutura em nuvem de forma automatizada. Em ambientes reais, criar recursos manualmente pode gerar inconsistências, aumentar o tempo de implantação e dificultar a padronização entre diferentes ambientes.
+
 ## Objetivo
-Automatizar a criação de infraestrutura na AWS utilizando o AWS CloudFormation, permitindo provisionamento consistente, reproduzível e escalável por meio de templates em YAML.
 
----
+Meu objetivo foi automatizar a criação de infraestrutura na AWS utilizando o AWS CloudFormation, permitindo o provisionamento de recursos de maneira consistente, reutilizável e escalável por meio de templates em YAML.
 
-## Serviços utilizados
+## Solução
+
+Para resolver esse desafio, utilizei o AWS CloudFormation para definir a infraestrutura como código utilizando templates em YAML. Inicialmente, criei uma stack contendo recursos básicos como VPC, sub-rede e grupo de segurança. Em seguida, atualizei o template para adicionar um bucket S3 e posteriormente uma instância EC2 configurada com uma AMI dinâmica obtida pelo Systems Manager Parameter Store. Durante o processo, acompanhei a criação e atualização dos recursos até a validação da infraestrutura. Ao final, realizei a exclusão da stack, removendo automaticamente todos os recursos criados.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - AWS CloudFormation
 - Amazon VPC
 - Amazon EC2
 - Amazon S3
 - AWS Systems Manager (Parameter Store)
+- YAML
+- Infrastructure as Code (IaC)
+- Stack
+- Templates
+- Automação de infraestrutura
 
----
-
-## Implementação
-
-### Etapa 1: Criação da Stack inicial
-- Upload do template `task1.yaml`
-- Criação de:
-  - VPC
-  - Sub-rede
-  - Grupo de segurança
-- Acompanhamento via aba **Events** e **Resources**
-
-### Etapa 2: Adição do S3
-- Edição do template YAML
-- Inclusão de um bucket S3 na seção `Resources`
-- Atualização da stack existente
-- Validação via **UPDATE_COMPLETE**
-
-### Etapa 3: Adição de EC2
-- Inclusão de parâmetro dinâmico para AMI via Parameter Store
-- Criação de instância EC2 com:
-  - AMI dinâmica
-  - Tipo t3.micro
-  - Security Group existente
-  - Sub-rede pública
-- Uso de `!Ref` para referenciar recursos existentes
-
-### Etapa 4: Exclusão da Stack
-- Remoção completa da infraestrutura
-- Exclusão automática de todos os recursos criados
-
----
 
 ## Arquitetura da solução
 
@@ -102,11 +85,10 @@ Resources:
         - Key: Name
           Value: App Server
 ````
-## Aprendizado
+## Resultado
 
-- Infraestrutura como código (IaC) na prática
-- Uso de templates YAML no CloudFormation
-- Criação e atualização de stacks
-- Referência entre recursos com !Ref
-- Uso do Parameter Store para AMIs dinâmicas
-- Gerenciamento automatizado do ciclo de vida da infraestrutura
+Ao final do laboratório, consegui automatizar a criação completa de uma infraestrutura na AWS utilizando templates. Também realizei atualizações no ambiente adicionando novos recursos sem precisar recriar toda a estrutura, além de automatizar a remoção dos componentes ao finalizar o projeto.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre infraestrutura como código e automação em ambientes cloud. Aprendi como o CloudFormation permite criar ambientes padronizados e reproduzíveis, reduzindo erros manuais e aumentando a eficiência do provisionamento. Também compreendi a importância do uso de templates reutilizáveis e da automação no gerenciamento do ciclo de vida da infraestrutura.
