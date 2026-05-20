@@ -1,46 +1,31 @@
 # Projeto 11 — Compartilhamento de Arquivos com Amazon EFS
 
----
+## Problema
+
+O desafio deste laboratório foi compreender como disponibilizar armazenamento compartilhado entre diferentes servidores em um ambiente de nuvem. Em cenários reais, aplicações distribuídas frequentemente precisam acessar os mesmos arquivos simultaneamente, exigindo uma solução centralizada, escalável e persistente.
 
 ## Objetivo
 
-Implementar um sistema de armazenamento compartilhado na AWS utilizando o Amazon EFS (Elastic File System), permitindo que múltiplas instâncias EC2 acessem e manipulem os mesmos arquivos simultaneamente.
+Meu objetivo foi implementar um sistema de armazenamento compartilhado utilizando o Amazon EFS, permitindo que múltiplas instâncias EC2 acessassem e manipulassem os mesmos arquivos de forma simultânea.
 
----
+## Solução
 
-## Serviços utilizados
+Para resolver esse desafio, criei uma VPC com sub-redes e implementei três instâncias EC2 distribuídas em diferentes Zonas de Disponibilidade. Em seguida, criei um sistema de arquivos utilizando o Amazon EFS e realizei sua montagem em duas instâncias EC2. Após a configuração, executei testes para validar o compartilhamento, verificando que arquivos criados em uma instância também estavam disponíveis na outra, confirmando o funcionamento do armazenamento compartilhado.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
 
 - Amazon VPC
 - Amazon EC2
 - Amazon EFS
-- AWS CLI / Terminal Linux
-- EC2 Instance Connect / Secure Shell
-
----
-
-## Implementação
-
-O laboratório foi executado seguindo as etapas abaixo:
-
-1. Criação de uma VPC completa
-   - Utilização de sub-redes públicas
-
-2. Criação de três instâncias EC2
-   - Distribuídas em diferentes zonas de disponibilidade
-
-3. Criação do sistema de arquivos no Amazon EFS
-   - Endpoint criado:
-     fs-0bfdadb3e6d87f951.efs.us-west-2.amazonaws.com
-
-4. Montagem do EFS em duas instâncias EC2
-   - Instalação de dependências
-   - Criação de diretório
-   - Montagem do sistema de arquivos
-
-5. Validação do compartilhamento
-   - Arquivos criados em uma instância são acessíveis na outra
-
----
+- AWS CLI
+- Terminal Linux
+- EC2 Instance Connect
+- Secure Shell (SSH)
+- Armazenamento compartilhado
+- Sistema de arquivos distribuído
+- Persistência de dados
 
 ## Arquitetura da solução
 <img width="1536" height="1024" alt="Diagrama Arquitetura Lab 10 04" src="https://github.com/user-attachments/assets/03991c06-36c9-43f3-8e45-c149ce647d71" />
@@ -96,14 +81,10 @@ sudo mount -t efs -o tls fs-0bfdadb3e6d87f951.efs.us-west-2.amazonaws.com:/ fina
 
 df -h
 ````
-## Aprendizado
+## Resultado
 
-Este laboratório proporcionou uma compreensão prática sobre:
+Ao final do laboratório, consegui implementar um sistema de armazenamento compartilhado funcional entre diferentes instâncias EC2. Também validei o acesso simultâneo aos mesmos arquivos, demonstrando o funcionamento correto do Amazon EFS em um ambiente distribuído.
 
-- Como implementar armazenamento compartilhado na AWS
-- Diferença entre armazenamento local e distribuído
-- Uso do Amazon EFS para aplicações escaláveis
-- Montagem de sistemas de arquivos em múltiplas instâncias
-- Importância do EFS em arquiteturas resilientes
+## Aprendizados
 
-Além disso, reforçou o entendimento de como serviços da AWS se integram para formar soluções completas em cloud computing.
+Este laboratório me proporcionou uma experiência prática sobre armazenamento compartilhado em ambientes cloud. Aprendi a diferença entre armazenamento local e distribuído, além de compreender como o Amazon EFS pode ser utilizado para permitir acesso simultâneo a arquivos entre diferentes servidores. Também entendi a importância desse tipo de solução em arquiteturas escaláveis, resilientes e que exigem compartilhamento contínuo de dados.
