@@ -1,38 +1,33 @@
 # Investigação de Incidente com AWS CloudTrail + Athena
 
+## Problema
+
+O desafio deste laboratório foi compreender como investigar incidentes de segurança em ambientes cloud e identificar atividades suspeitas dentro da infraestrutura. Em cenários reais, ataques ou configurações incorretas podem comprometer recursos e serviços, tornando essencial a capacidade de rastrear eventos, identificar a origem do problema e aplicar correções rapidamente.
+
 ## Objetivo
-Investigar uma invasão em uma instância EC2 utilizando logs do AWS CloudTrail, identificar o responsável, analisar ações suspeitas e aplicar correções de segurança no ambiente AWS.
 
----
+Meu objetivo foi investigar um incidente em uma instância EC2 utilizando logs do AWS CloudTrail, identificar ações suspeitas, descobrir a origem do problema e aplicar correções de segurança no ambiente AWS.
 
-## Serviços Utilizados
+## Solução
+
+Para resolver esse desafio, iniciei a análise verificando configurações da instância EC2 e regras de segurança do ambiente. Em seguida, utilizei o AWS CloudTrail para registrar e rastrear eventos realizados na conta. Os logs gerados foram armazenados no Amazon S3 e analisados utilizando ferramentas de linha de comando e consultas estruturadas no Amazon Athena. Durante a investigação, identifiquei alterações suspeitas relacionadas à configuração do ambiente, localizei o usuário responsável pelas ações indevidas e realizei correções de segurança, incluindo remoção de acessos indevidos, ajustes de permissões e restauração do ambiente comprometido.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - AWS CloudTrail
 - Amazon S3
 - Amazon Athena
-- AWS EC2
+- Amazon EC2
 - AWS IAM
 - AWS CLI
-- Linux (grep, SSH)
+- Linux
+- SSH
+- Logs de auditoria
+- Investigação de incidentes
+- Consultas SQL
 
----
-
-## Implementação
-
-1. Análise inicial do ambiente EC2 e grupo de segurança
-2. Criação de uma trilha no CloudTrail para captura de eventos
-3. Identificação de alteração suspeita (abertura da porta 22 para 0.0.0.0/0)
-4. Download dos logs do CloudTrail via AWS CLI
-5. Extração e análise dos logs com comandos Linux (grep)
-6. Consulta de eventos com AWS CLI (lookup-events)
-7. Criação de tabela no Athena para análise estruturada
-8. Execução de queries SQL para identificar o invasor
-9. Identificação do usuário malicioso (chaos-user)
-10. Remoção do acesso indevido no sistema operacional
-11. Correção de falhas de segurança no SSH
-12. Exclusão do usuário malicioso no IAM
-13. Restauração do site comprometido
-
----
 
 ## Arquitetura da Solução
 
@@ -100,6 +95,10 @@ SELECT useridentity.userName, eventtime, eventsource, eventname
 FROM cloudtrail_logs_monitoring####
 WHERE eventsource = 'ec2.amazonaws.com'
 ````
-## Aprendizado
+## Resultado
 
-Neste laboratório aprendi na prática como utilizar o AWS CloudTrail como ferramenta de auditoria e investigação de segurança, entendendo como rastrear ações realizadas dentro da conta AWS. Também desenvolvi habilidades na análise de logs utilizando tanto ferramentas de linha de comando quanto consultas SQL no Athena, o que facilitou a identificação do invasor e das ações realizadas. Além disso, compreendi a importância de boas práticas de segurança, como restrições em grupos de segurança, uso correto de autenticação SSH e gestão adequada de usuários IAM para evitar acessos indevidos e vulnerabilidades em ambientes cloud.
+Ao final do laboratório, consegui identificar a origem das alterações indevidas no ambiente, rastrear as ações realizadas e aplicar medidas corretivas para restaurar a segurança da infraestrutura. Também validei a remoção dos acessos não autorizados e a recuperação do ambiente comprometido.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre investigação e resposta a incidentes em ambientes cloud. Aprendi a importância dos logs de auditoria para rastrear atividades realizadas na infraestrutura e compreendi como ferramentas como CloudTrail e Athena podem auxiliar na análise e identificação de eventos suspeitos. Além disso, reforcei conhecimentos relacionados a boas práticas de segurança, gerenciamento de acessos e correção de vulnerabilidades para reduzir riscos em ambientes na nuvem.
