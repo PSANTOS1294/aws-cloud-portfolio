@@ -1,39 +1,33 @@
 # Auto Scaling e Load Balancer na AWS
 
-## Objetivo
-Implementar uma arquitetura altamente disponível e escalável utilizando Elastic Load Balancer (ELB) e Auto Scaling, garantindo distribuição de carga e ajuste automático de capacidade conforme a demanda.
+## Problema
 
-## Serviços Utilizados
+O desafio deste laboratório foi compreender como manter aplicações disponíveis e com bom desempenho mesmo quando ocorre aumento no número de acessos. Em ambientes reais, uma única instância pode não ser suficiente para atender à demanda, tornando necessário distribuir a carga e aumentar recursos automaticamente quando necessário.
+
+## Objetivo
+
+Meu objetivo foi implementar uma arquitetura escalável e altamente disponível utilizando Load Balancer e Auto Scaling, garantindo distribuição de tráfego entre servidores e ajuste automático da capacidade conforme a demanda.
+
+## Solução
+
+Para resolver esse desafio, criei uma imagem (AMI) a partir de uma instância EC2 existente e a utilizei para padronizar novas implantações. Em seguida, configurei um Application Load Balancer para distribuir o tráfego entre diferentes instâncias e criei um Target Group para gerenciar esses recursos. Também configurei um Launch Template e um Auto Scaling Group para criar e remover instâncias automaticamente conforme o uso de CPU. Além disso, utilizei múltiplas zonas de disponibilidade e monitorei métricas utilizando o CloudWatch.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - Amazon EC2
 - Elastic Load Balancer (Application Load Balancer)
 - Auto Scaling Group
 - Amazon CloudWatch
 - Amazon VPC
 - Amazon Machine Image (AMI)
+- Launch Template
+- Target Group
+- Alta disponibilidade
+- Escalabilidade automática
+- Balanceamento de carga
 
-## Implementação
-
-Durante este laboratório prático, foram realizadas as seguintes etapas:
-
-1. Criação de uma AMI a partir de uma instância EC2 existente.
-2. Configuração de um Application Load Balancer (ALB).
-3. Criação de um Target Group para gerenciamento das instâncias.
-4. Configuração de listeners e regras de roteamento HTTP.
-5. Criação de um Launch Template com a AMI gerada.
-6. Definição do tipo de instância e Security Group.
-7. Criação de um Auto Scaling Group.
-8. Configuração de sub-redes privadas em múltiplas zonas de disponibilidade.
-9. Associação do Auto Scaling Group ao Load Balancer.
-10. Definição de capacidade mínima, desejada e máxima (2 a 4 instâncias).
-11. Configuração de política de escalabilidade baseada em CPU (50%).
-12. Criação automática de alarmes no CloudWatch.
-13. Teste de balanceamento de carga via DNS do Load Balancer.
-14. Simulação de carga para acionar o Auto Scaling.
-15. Monitoramento do aumento automático de instâncias.
-16. Encerramento da instância original após criação da AMI.
-
-## Arquitetura da Solução
-A arquitetura consiste em um Application Load Balancer distribuindo o tráfego entre múltiplas instâncias EC2 localizadas em sub-redes privadas e em diferentes Zonas de Disponibilidade. O Auto Scaling Group garante que a quantidade de instâncias se ajuste automaticamente conforme a demanda, baseado em métricas de CPU monitoradas pelo CloudWatch. Essa abordagem proporciona alta disponibilidade, tolerância a falhas e otimização de custos.
 
 ## Evidências
 
@@ -44,5 +38,10 @@ A arquitetura consiste em um Application Load Balancer distribuindo o tráfego e
 <img width="1333" height="480" alt="LAB 174 5" src="https://github.com/user-attachments/assets/762a0f53-c6d5-43c7-aa2d-53e404b6c380" />
 
 
-## Aprendizado
-Este laboratório proporcionou uma visão prática e aprofundada sobre arquiteturas escaláveis e resilientes na AWS. Foi possível compreender como distribuir carga entre múltiplas instâncias utilizando um Load Balancer, além de automatizar o provisionamento de recursos com Auto Scaling. Também foram reforçados conceitos como alta disponibilidade, uso de múltiplas zonas de disponibilidade, monitoramento com CloudWatch e otimização de custos com escalabilidade automática. Esses conhecimentos são essenciais para o desenvolvimento de soluções robustas em ambientes de produção na nuvem.
+## Resultado
+
+Ao final do laboratório, consegui criar uma arquitetura capaz de distribuir automaticamente o tráfego entre múltiplas instâncias e ajustar a quantidade de servidores conforme a demanda. Também validei o funcionamento do balanceamento de carga e acompanhei a criação automática de novas instâncias durante os testes de aumento de carga.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre arquiteturas escaláveis e resilientes na AWS. Aprendi a importância de distribuir cargas entre diferentes servidores para melhorar a disponibilidade das aplicações e reduzir pontos únicos de falha. Também compreendi como o Auto Scaling ajuda a otimizar recursos e custos, aumentando ou reduzindo automaticamente a infraestrutura de acordo com a necessidade do ambiente.
