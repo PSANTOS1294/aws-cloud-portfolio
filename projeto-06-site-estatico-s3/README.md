@@ -1,34 +1,31 @@
 # Hospedagem de Site Estático no Amazon S3
 
-## Objetivo
-Criar e hospedar um site estático utilizando o Amazon S3, utilizando a AWS CLI para automação do processo, além de configurar permissões de acesso com IAM.
+## Problema
 
-## Serviços Utilizados
+O desafio deste laboratório foi compreender como publicar e disponibilizar um site na nuvem de maneira simples, segura e organizada. Além da hospedagem do conteúdo, também foi necessário entender como controlar permissões de acesso e automatizar processos para facilitar futuras atualizações do site.
+
+## Objetivo
+
+Meu objetivo foi criar e hospedar um site estático utilizando o Amazon S3, utilizando a AWS CLI para automatizar tarefas e o IAM para gerenciar permissões de acesso aos recursos utilizados.
+
+## Solução
+
+Para resolver esse desafio, acessei uma instância EC2 utilizando o Systems Manager e configurei a AWS CLI para comunicação com os serviços da AWS. Em seguida, criei um bucket no Amazon S3 para armazenar os arquivos do site, configurei permissões de acesso utilizando o IAM e habilitei a hospedagem estática do bucket. Após realizar o upload dos arquivos do site, desenvolvi um script em bash para automatizar futuras atualizações, permitindo uma nova publicação do conteúdo de forma mais rápida e prática.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - Amazon S3
 - AWS Command Line Interface (AWS CLI)
 - AWS Identity and Access Management (IAM)
 - Amazon EC2
 - AWS Systems Manager (Session Manager)
-
-## Implementação
-
-Durante este laboratório prático, foram realizadas as seguintes etapas:
-
-1. Conexão com a instância EC2 utilizando o Session Manager (SSM).
-2. Configuração da AWS CLI com credenciais de acesso.
-3. Criação de um bucket S3 com nome único.
-4. Criação de um usuário IAM com acesso ao serviço S3.
-5. Associação de políticas de acesso ao usuário IAM.
-6. Configuração das permissões do bucket para acesso público.
-7. Extração dos arquivos do site estático em ambiente Linux.
-8. Upload dos arquivos para o bucket utilizando AWS CLI.
-9. Configuração do bucket para hospedagem de site estático.
-10. Acesso ao site por meio do endpoint público do S3.
-11. Criação de um script em bash para automatizar atualizações do site.
-12. Alteração do conteúdo do site e reimplantação utilizando o script.
-
-## Arquitetura da Solução
-A solução consiste em uma instância EC2 acessada via Systems Manager, onde a AWS CLI é utilizada para interagir com os serviços da AWS. Um bucket S3 é criado para armazenar os arquivos do site estático e configurado para hospedagem pública. O IAM é utilizado para gerenciar permissões de acesso. A atualização do site é automatizada por meio de um script em bash, permitindo deploy rápido e eficiente das alterações.
+- Linux
+- Script Bash
+- Hospedagem de site estático
+- Automação de deploy
+- Controle de acesso
 
 ## Evidências
 
@@ -58,6 +55,10 @@ aws s3 ls s3://<nome-do-bucket>/
 #!/bin/bash
 aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://<nome-do-bucket>/ --recursive --acl public-read
 ````
-## Aprendizado
+## Resultado
 
-Este laboratório proporcionou uma experiência prática completa na criação e hospedagem de um site estático utilizando o Amazon S3. Foi possível compreender o processo de configuração de permissões, uso da AWS CLI para automação e integração com o IAM para controle de acesso. Além disso, a criação de um script para atualização do site reforçou conceitos importantes de automação e deploy contínuo, habilidades essenciais para atuação profissional em Cloud Computing.
+Ao final do laboratório, consegui hospedar um site estático no Amazon S3 e disponibilizá-lo por meio de um endereço público. Também configurei permissões adequadas para acesso aos recursos e automatizei o processo de atualização do site, tornando futuras alterações mais rápidas e eficientes.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre hospedagem de sites estáticos na AWS e mostrou como serviços diferentes podem trabalhar em conjunto. Aprendi a configurar permissões utilizando o IAM, utilizar a AWS CLI para automatizar tarefas e criar scripts para facilitar processos repetitivos. Além disso, compreendi a importância da automação para otimizar atividades e tornar a administração de ambientes cloud mais eficiente.
