@@ -1,61 +1,38 @@
 # Projeto 13 - Monitoramento com CloudWatch, EventBridge e AWS Config
 
+## Problema
+
+O desafio deste laboratório foi compreender como monitorar recursos em nuvem de forma eficiente e automatizar respostas a eventos importantes. Em ambientes reais, apenas disponibilizar aplicações não é suficiente; também é necessário acompanhar desempenho, identificar falhas rapidamente e garantir que os recursos estejam seguindo padrões e boas práticas de configuração.
+
 ## Objetivo
-Implementar uma solução completa de monitoramento e observabilidade na AWS, coletando métricas e logs de instâncias EC2, criando alarmes, automatizando respostas a eventos e garantindo conformidade com AWS Config.
 
----
+Meu objetivo foi implementar uma solução completa de monitoramento e observabilidade na AWS, coletando métricas e logs de instâncias EC2, criando alarmes, automatizando respostas a eventos e verificando a conformidade dos recursos.
 
-## Serviços utilizados
+## Solução
+
+Para resolver esse desafio, instalei e configurei o CloudWatch Agent em uma instância EC2 para coletar métricas e logs do ambiente. Em seguida, configurei o envio de logs específicos e criei filtros para transformar eventos em métricas monitoráveis. Também configurei alarmes integrados ao SNS para envio automático de notificações. Para ampliar a automação, utilizei o EventBridge para identificar eventos relacionados às instâncias EC2 e gerar respostas automáticas. Além disso, implementei regras no AWS Config para verificar a conformidade dos recursos e validar boas práticas de configuração.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - Amazon EC2
-- Amazon CloudWatch (Logs, Metrics, Alarms)
+- Amazon CloudWatch
+- CloudWatch Logs
+- CloudWatch Alarms
 - AWS Systems Manager
 - Amazon EventBridge
 - Amazon SNS
 - AWS Config
-
----
-
-## Implementação
-
-### 🔹 Etapa 1: Instalação do CloudWatch Agent
-- Utilização do Systems Manager (Run Command)
-- Instalação do pacote AmazonCloudWatchAgent na instância EC2
-
-### 🔹 Etapa 2: Configuração do Agent
-- Criação de parâmetro no Parameter Store (Monitor-Web-Server)
-- Aplicação da configuração via comando AmazonCloudWatch-ManageAgent
-
-### 🔹 Etapa 3: Coleta de Logs
-- Logs monitorados:
-  - HttpAccessLog
-  - HttpErrorLog
-- Criação de filtro para erros 404 (métrica 404Errors)
-
-### 🔹 Etapa 4: Criação de Alarme
-- Condição: ≥ 5 erros em 1 minuto
-- Integração com SNS para envio de notificações
-
-### 🔹 Etapa 5: Automação com EventBridge
-- Monitoramento de eventos da EC2 (stop e terminate)
-- Disparo de notificações via SNS
-
-### 🔹 Etapa 6: Teste prático
-- Parada da instância EC2
-- Validação do recebimento de alerta por e-mail
-
-### 🔹 Etapa 7: Conformidade com AWS Config
-- Regra de obrigatoriedade de tags (project)
-- Verificação de uso de volumes (ec2-volume-inuse-check)
-
----
+- Parameter Store
+- CloudWatch Agent
+- Monitoramento e observabilidade
+- Automação de eventos
 
 ## Arquitetura da solução
 
 <img width="2391" height="926" alt="image" src="https://github.com/user-attachments/assets/dcf492bf-4333-49e5-9c41-633e298ad84f" />
 
-
-
----
 
 
 ## Evidências
@@ -110,6 +87,10 @@ aws ssm send-command \
 [ip, id, user, timestamp, request, status_code=404, size]
 ````
 
-## Aprendizado
+## Resultado
 
-Neste laboratório, aprendi na prática como estruturar um sistema completo de monitoramento na AWS, integrando diferentes serviços para observar, reagir e garantir a saúde da infraestrutura. Entendi como coletar métricas e logs detalhados de instâncias EC2 com o CloudWatch Agent, transformar esses dados em insights por meio de filtros e alarmes, e automatizar respostas a eventos com EventBridge e SNS. Além disso, compreendi a importância da governança com o AWS Config, garantindo que os recursos estejam em conformidade com boas práticas. Esse conjunto de ferramentas mostrou como construir soluções mais resilientes, observáveis e preparadas para cenários reais de produção.
+Ao final do laboratório, consegui implementar uma solução integrada de monitoramento capaz de coletar logs e métricas, gerar alarmes, enviar notificações automáticas e monitorar eventos da infraestrutura. Também validei o funcionamento das regras de conformidade para garantir que os recursos estivessem alinhados às configurações definidas.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre monitoramento, observabilidade e governança em ambientes cloud. Aprendi a importância de acompanhar métricas e logs para identificar problemas rapidamente, além de compreender como automatizar respostas por meio de eventos e notificações. Também entendi como ferramentas de conformidade ajudam a manter ambientes mais organizados, seguros e alinhados com boas práticas de infraestrutura.
