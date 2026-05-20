@@ -1,37 +1,32 @@
 # Arquitetura com EC2 Bastion Host e Provisionamento via AWS CLI
 
-## Objetivo
-Criar uma arquitetura com um Bastion Host utilizando Amazon EC2 e provisionar uma segunda instância (servidor web) por meio da AWS CLI, aplicando conceitos de acesso seguro e automação.
+## Problema
 
-## Serviços Utilizados
+O desafio deste laboratório foi compreender como criar uma arquitetura que permitisse acesso seguro aos recursos em nuvem e, ao mesmo tempo, automatizar a criação de novos servidores. Em ambientes corporativos, realizar configurações manualmente pode aumentar o risco de erros, além de dificultar a padronização e a escalabilidade da infraestrutura.
+
+## Objetivo
+
+Meu objetivo foi criar uma arquitetura utilizando um Bastion Host com Amazon EC2 e realizar o provisionamento automatizado de uma segunda instância por meio da AWS CLI, aplicando conceitos de segurança e automação.
+
+## Solução
+
+Para resolver esse desafio, criei uma instância EC2 atuando como Bastion Host, que serviu como ponto seguro de acesso ao ambiente. Configurei permissões por meio de Security Groups e associei uma Role IAM para permitir a utilização da AWS CLI. Em seguida, utilizei comandos para recuperar informações necessárias, como a AMI mais recente, sub-redes e grupos de segurança. Também realizei o provisionamento automatizado de uma nova instância EC2, configurando automaticamente um servidor web por meio de um script User Data.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - Amazon EC2
 - AWS CLI
 - AWS Systems Manager (Parameter Store)
 - Amazon VPC
 - Security Groups
-
-## Implementação
-
-Durante este laboratório prático, foram realizadas as seguintes etapas:
-
-1. Criação de uma instância EC2 atuando como Bastion Host.
-2. Configuração da instância utilizando Amazon Linux 2.
-3. Definição de Security Group permitindo acesso SSH.
-4. Associação de Role IAM para permitir uso da AWS CLI.
-5. Conexão segura ao Bastion Host utilizando EC2 Instance Connect.
-6. Utilização da AWS CLI para automação de recursos.
-7. Recuperação da AMI mais recente via AWS Systems Manager Parameter Store.
-8. Recuperação do ID da sub-rede pública via CLI.
-9. Recuperação do Security Group do servidor web.
-10. Download de script de dados do usuário (User Data).
-11. Criação de uma instância EC2 via AWS CLI.
-12. Configuração automática do servidor web (Apache) via script.
-13. Monitoramento do status da instância via CLI.
-14. Obtenção do DNS público da instância.
-15. Teste do servidor web em execução no navegador.
-
-## Arquitetura da Solução
-A arquitetura consiste em um Bastion Host em uma sub-rede pública que serve como ponto seguro de acesso. A partir dele, uma segunda instância EC2 é provisionada via AWS CLI, configurada automaticamente como servidor web por meio de User Data. O controle de acesso é realizado com Security Groups, e a automação é feita utilizando comandos da AWS CLI, garantindo padronização e eficiência no provisionamento.
+- Amazon Linux 2
+- Bastion Host
+- User Data
+- IAM Role
+- Automação de infraestrutura
+- Provisionamento de recursos
 
 ## Evidências
 
@@ -75,6 +70,10 @@ aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Inst
 # Obter DNS público
 aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text
 ````
-## Aprendizado
+## Resultado
 
-Este laboratório foi fundamental para consolidar conhecimentos sobre arquitetura em nuvem e automação na AWS. Foi possível entender na prática o conceito de Bastion Host como ponto seguro de acesso, além de utilizar a AWS CLI para provisionar recursos de forma automatizada. Também foram reforçados conceitos como uso de User Data para configuração automática, recuperação dinâmica de recursos (AMI, sub-rede e Security Groups) e boas práticas de segurança. Esse tipo de abordagem é essencial para ambientes profissionais que exigem escalabilidade, padronização e redução de erros manuais.
+Ao final do laboratório, consegui criar uma arquitetura funcional com um Bastion Host como ponto seguro de acesso e provisionar automaticamente uma nova instância configurada como servidor web. Também validei a comunicação entre os recursos e confirmei o funcionamento correto do servidor por meio do acesso via navegador.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática sobre segurança e automação em ambientes cloud. Aprendi a importância do Bastion Host para proteger acessos, além de compreender como a AWS CLI pode ser utilizada para automatizar processos e reduzir atividades manuais. Também entendi como recursos como User Data e recuperação dinâmica de informações contribuem para maior padronização, escalabilidade e eficiência na administração da infraestrutura.
