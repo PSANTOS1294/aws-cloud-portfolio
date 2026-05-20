@@ -1,32 +1,31 @@
 # Instalação e Configuração da AWS CLI
 
-## Objetivo
-Instalar e configurar a AWS Command Line Interface (AWS CLI) em uma instância Linux Red Hat, utilizando um ambiente Windows com acesso via PuTTY, permitindo a interação com serviços da AWS por linha de comando com autenticação segura via IAM.
+## Problema
 
-## Serviços Utilizados
+O desafio deste laboratório foi compreender como realizar a conexão e o gerenciamento de recursos da AWS por meio de linha de comando. Em ambientes profissionais, muitas atividades são executadas utilizando ferramentas automatizadas e comandos, tornando necessário entender como configurar acessos seguros e interagir com os serviços de forma eficiente.
+
+## Objetivo
+
+Meu objetivo foi instalar e configurar a AWS Command Line Interface (AWS CLI) em uma instância Linux Red Hat, utilizando um ambiente Windows para acesso remoto, permitindo a comunicação com serviços da AWS por meio de comandos e autenticação segura.
+
+## Solução
+
+Para resolver esse desafio, acessei uma instância EC2 baseada em Linux Red Hat por meio de conexão SSH utilizando o PuTTY. Em seguida, realizei a instalação da AWS CLI, validei seu funcionamento e configurei credenciais de acesso utilizando informações fornecidas pelo IAM. Após a configuração, executei comandos para interagir com recursos da AWS e validar a comunicação com os serviços disponíveis.
+
+## Ferramentas
+
+Tecnologias e recursos utilizados no projeto:
+
 - Amazon EC2
 - AWS Command Line Interface (AWS CLI)
 - AWS Identity and Access Management (IAM)
 - Amazon VPC
-- SSH (Secure Shell)
-- PuTTY (cliente SSH)
-
-## Implementação
-
-Durante este laboratório prático, foram realizadas as seguintes etapas:
-
-1. Acesso ao ambiente AWS e obtenção das credenciais do laboratório.
-2. Download da chave de acesso no formato `.ppk`.
-3. Conexão com a instância EC2 Red Hat via SSH utilizando o PuTTY no Windows.
-4. Download e instalação da AWS CLI na instância Linux.
-5. Validação da instalação por meio de comandos de verificação.
-6. Acesso ao console do IAM para análise de usuários e políticas.
-7. Configuração da AWS CLI com credenciais (Access Key e Secret Key).
-8. Execução de comandos para interação com o IAM via CLI.
-
-## Arquitetura da Solução
-A solução consiste em uma VPC contendo uma instância EC2 baseada em Linux Red Hat. O acesso à instância foi realizado a partir de um ambiente Windows utilizando o PuTTY para conexão SSH. Dentro da instância, a AWS CLI foi instalada e configurada, permitindo interação com serviços da AWS. O IAM foi utilizado para controle de acesso, garantindo segurança na autenticação e autorização das operações realizadas.
-
+- SSH
+- PuTTY
+- Linux Red Hat
+- Gerenciamento por linha de comando
+- Controle de acesso
+- 
 ## Evidências
 
 <img width="658" height="419" alt="LAB 168 1" src="https://github.com/user-attachments/assets/27b34ab8-32d8-4e99-8d3f-420c61fed8fb" />
@@ -56,6 +55,10 @@ aws configure
 # Testar acesso ao IAM
 aws iam list-users
 ```
-## Aprendizado
+## Resultado
 
-Este laboratório proporcionou uma experiência prática completa na utilização da AWS CLI em um ambiente Windows com acesso remoto via PuTTY. Foi possível compreender o processo de conexão segura com instâncias EC2, além da instalação e configuração da CLI em um ambiente Linux. A prática reforçou a importância do uso de ferramentas de linha de comando e autenticação via IAM, habilidades essenciais para atuação profissional em Cloud Computing.
+Ao final do laboratório, consegui instalar e configurar a AWS CLI em uma instância Linux, estabelecendo uma conexão segura com a AWS e realizando interações com recursos por meio de comandos. Também validei o acesso utilizando credenciais configuradas corretamente.
+
+## Aprendizados
+
+Este laboratório me proporcionou uma experiência prática no uso da AWS CLI e reforçou a importância das ferramentas de linha de comando em ambientes de computação em nuvem. Aprendi como realizar conexões remotas seguras, configurar autenticação utilizando o IAM e executar comandos para administrar recursos da AWS. Além disso, compreendi como esse tipo de ferramenta pode aumentar a produtividade e facilitar tarefas administrativas em ambientes cloud.
